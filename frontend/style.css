@@ -1,0 +1,473 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    padding: 35px 20px;
+
+    background:
+        radial-gradient(circle at 10% 10%, #dbeafe 0, transparent 25%),
+        radial-gradient(circle at 90% 20%, #ede9fe 0, transparent 25%),
+        radial-gradient(circle at 50% 100%, #ccfbf1 0, transparent 30%),
+        #f8fafc;
+
+    color: #1e293b;
+    animation: pageLoad 0.7s ease;
+}
+
+/* =========================
+   MAIN WIDTH
+========================= */
+
+body > * {
+    max-width: 950px;
+}
+
+body > a {
+    display: inline-block;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+body > a {
+    text-decoration: none;
+    color: #475569;
+    font-weight: 600;
+
+    padding: 9px 15px;
+    margin-right: 6px;
+
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+body > a:hover {
+    color: #4f46e5;
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   HEADING
+========================= */
+/* =========================
+   HEADING
+========================= */
+h1 {
+    display: block;
+    width: 100%;
+
+    margin: 30px 0 25px;
+
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+
+    color: #4f46e5;
+
+    animation: headingIn 0.8s ease;
+}
+
+h1:hover {
+    transform: translateX(5px);
+    transition: 0.3s ease;
+}
+input {
+    width: 47%;
+    padding: 14px 17px;
+
+    margin-right: 1%;
+    margin-bottom: 18px;
+
+    border: 1px solid #dbe3ef;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    font-size: 15px;
+    color: #1e293b;
+
+    outline: none;
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+input:hover {
+    border-color: #a5b4fc;
+    transform: translateY(-2px);
+}
+
+input:focus {
+    border-color: #6366f1;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.12),
+        0 8px 20px rgba(79, 70, 229, 0.08);
+
+    transform: translateY(-2px);
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+/* =========================
+   MARKDOWN EDITOR
+========================= */
+
+.editor-toolbar {
+    border: none !important;
+    border-radius: 14px 14px 0 0 !important;
+
+    background: rgba(255, 255, 255, 0.95) !important;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.07);
+}
+
+.CodeMirror {
+    min-height: 330px !important;
+
+    border: none !important;
+    border-radius: 0 0 14px 14px !important;
+
+    background: white !important;
+
+    font-size: 15px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.07);
+}
+
+.CodeMirror-focused {
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.12),
+        0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+    border: none;
+
+    padding: 13px 22px;
+    margin-top: 20px;
+
+    border-radius: 11px;
+
+    background: linear-gradient(
+        135deg,
+        #4f46e5,
+        #7c3aed
+    );
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 18px rgba(79, 70, 229, 0.25);
+
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.02);
+
+    box-shadow:
+        0 12px 25px rgba(79, 70, 229, 0.35);
+}
+
+button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Refresh button */
+
+#refreshBtn {
+    background: linear-gradient(
+        135deg,
+        #0f766e,
+        #14b8a6
+    );
+
+    box-shadow:
+        0 8px 18px rgba(13, 148, 136, 0.25);
+}
+
+#refreshBtn:hover {
+    box-shadow:
+        0 12px 25px rgba(13, 148, 136, 0.35);
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+#msg {
+    margin-top: 15px;
+
+    color: #059669;
+    font-weight: 600;
+
+    animation: fadeIn 0.4s ease;
+}
+
+/* =========================
+   NOTES CONTAINER
+========================= */
+
+#notes {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 22px;
+
+    margin-top: 10px;
+}
+
+/* =========================
+   NOTE CARD
+========================= */
+
+#notes > div {
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    border: 1px solid rgba(226, 232, 240, 0.9);
+
+    border-radius: 17px;
+
+    padding: 23px;
+
+    box-shadow:
+        0 8px 30px rgba(15, 23, 42, 0.07);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+
+    animation: cardIn 0.6s ease;
+}
+
+/* colorful top line */
+
+#notes > div::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        #4f46e5,
+        #8b5cf6,
+        #14b8a6
+    );
+}
+
+#notes > div:hover {
+    transform: translateY(-7px);
+
+    border-color: #c7d2fe;
+
+    box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+/* =========================
+   NOTE TITLE
+========================= */
+
+#notes h2 {
+    font-size: 21px;
+
+    color: #172033;
+
+    margin-bottom: 10px;
+
+    transition: color 0.3s ease;
+}
+
+#notes > div:hover h2 {
+    color: #4f46e5;
+}
+
+/* =========================
+   NOTE TEXT
+========================= */
+
+#notes p {
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 7px;
+}
+
+/* =========================
+   MARKDOWN
+========================= */
+
+#notes ul,
+#notes ol {
+    padding-left: 22px;
+    margin: 10px 0;
+}
+
+#notes li {
+    margin-bottom: 5px;
+}
+
+#notes code {
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    padding: 3px 7px;
+
+    border-radius: 6px;
+}
+
+#notes pre {
+    background: #172033;
+
+    color: #e2e8f0;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    overflow-x: auto;
+
+    margin-top: 12px;
+}
+
+/* =========================
+   EDIT LINK
+========================= */
+
+#notes a {
+    color: #4f46e5;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+#notes a:hover {
+    color: #7c3aed;
+    text-decoration: underline;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes pageLoad {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes headingIn {
+    from {
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 22px 15px;
+    }
+
+    h1 {
+        font-size: 29px;
+    }
+
+    input {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    #notes {
+        grid-template-columns: 1fr;
+    }
+
+    .CodeMirror {
+        min-height: 280px !important;
+    }
+}
