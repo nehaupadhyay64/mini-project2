@@ -1,4 +1,3 @@
-javascript
 const API_URL = "https://mini-project2-nevb.onrender.com";
 
 // CREATE AND EDIT NOTE
